@@ -1,14 +1,14 @@
 @baseUrl = http://localhost:8000/api
 
 ### Signup 
-GET {{baseUrl}}/admin HTTP/1.1
-content-type: application/json 
+GET {{baseUrl}}/create-admin HTTP/1.1
+# content-type: application/json 
 
-{  
-    "email":"Emmanuel229@gmail.com",
-    "password":"password",
-    "repeat_password":"password"
-}
+# {  
+#     "email":"Emmanuel229@gmail.com",
+#     "password":"password",
+#     "repeat_password":"password"
+# }
 
 
 ### Signin 

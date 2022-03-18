@@ -1,5 +1,5 @@
 const express = require('express');
-const { creat_admin } = require('../controllers/AminController');
+const { create_admin } = require("../controllers/AminController");
 const {
   signin,
   signup,
@@ -20,6 +20,6 @@ route // Auth Group
   .get("/", (req, res) => res.send("Api"));
 
 route // admin Group
-  .get("/admin", creat_admin)
+  .get("/create-admin", create_admin);
 module.exports=route;
 
