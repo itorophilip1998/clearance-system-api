@@ -1,3 +1,4 @@
+const Clearance = require("../model/Clearance");
 const Offices = require("../model/Offices");
 const User = require("../model/User");
 
@@ -25,6 +26,11 @@ exports.create_admin = async (req, res) => {
 };
 
 exports.get_asAdmin = async (req, res) => {
-  try {
+    try {
+      const users=await User.find({})
+      const clearance=await Clearance.find({})
+      const cleared = await Clearance.find({status:true});
+        const not_cleared = await Clearance.find({ status: false });
+        res.json({users,clearance,cleared,not_cleared})
   } catch (error) {}
 };
