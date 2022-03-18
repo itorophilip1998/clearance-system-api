@@ -40,7 +40,9 @@ exports.authenticateAdmin= (req, res, next) => {
     try {
       req.user = await User.findOne({ email: user.user }); 
     } catch (error) { }
-    if(!req.user.role==="admin") return res.sendStatus(403);
+    console.log(req.user.role);
+
+    if (req.user.role != "admin") return res.sendStatus(403);
     next();
   });
 };

@@ -5,7 +5,7 @@ const validator = async (data) => {
   try {
     const schema = Joi.object({
       user_id: Joi.string().required(),
-      status: Joi.string().required() 
+      status: Joi.boolean().required() 
     });
     const { repeat_password, ...newData } = await schema.validateAsync(data, {
       abortEarly: false,
@@ -19,7 +19,7 @@ const validator = async (data) => {
 exports.create_clearance = async (req, res) => {
   try {
     const validate = await validator(req.body);
-    await Clearance.create(validate)
+    await Clearance.create(req.body)
       .then((result) => {
         res.json({
           result,

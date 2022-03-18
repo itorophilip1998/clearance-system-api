@@ -1,31 +1,29 @@
 @baseUrl = http://localhost:8000/api
 
 ### Signup 
-GET {{baseUrl}}/create-admin HTTP/1.1
-# content-type: application/json 
+POST {{baseUrl}}/signup HTTP/1.1
+content-type: application/json 
 
-# {  
-#     "email":"Emmanuel229@gmail.com",
-#     "password":"password",
-#     "repeat_password":"password"
-# }
+{  
+    "email":"test@admin.com",
+    "password":"admin" 
+}
 
 
 ### Signin 
-POST {{baseUrl}}/signin HTTP/1.1
+POST {{baseUrl}}/create-clearance HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoidGVzdEBnbWFpbC5jb20iLCJpYXQiOjE2NDc1NzE1MDIsImV4cCI6MTY0NzU3MjEwMn0.0PDOzeEBzgIVHRIohASu9ZH0v9yo6J2vcPItQucN3do
 content-type: application/json 
 
-
-{  
-    "email":"Emmanuel229@gmail.com",
-    "password":"password",
-    "repeat_password":"password"
+{
+    "user_id":"String",
+    "status":1
 }
 
  
 ### Get User
-GET {{baseUrl}}/me HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiRW1tYW51ZWxAZ21haWwuY29tIiwiaWF0IjoxNjQ3MDA3MjU1LCJleHAiOjE2NDcwMDc4NTV9.rNop5AXxSW8vu8ds53uPFTIvMQ0gO4acg6eKNVBuPfI
+GET {{baseUrl}}/get-all HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW5AYWRtaW4uY29tIiwiaWF0IjoxNjQ3NTcxNjkzLCJleHAiOjE2NDc1NzIyOTN9.59zF_FYlePbZPwGLSTELqH0WWB5-x6hGRGvDkAjtSdg
 
 ### Refresh Token
 POST {{baseUrl}}/refresh-token HTTP/1.1
