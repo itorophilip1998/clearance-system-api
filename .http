@@ -1,0 +1,39 @@
+@baseUrl = http://localhost:8000/api
+
+### Signup 
+GET {{baseUrl}}/admin HTTP/1.1
+content-type: application/json 
+
+{  
+    "email":"Emmanuel229@gmail.com",
+    "password":"password",
+    "repeat_password":"password"
+}
+
+
+### Signin 
+POST {{baseUrl}}/signin HTTP/1.1
+content-type: application/json 
+
+
+{  
+    "email":"Emmanuel229@gmail.com",
+    "password":"password",
+    "repeat_password":"password"
+}
+
+ 
+### Get User
+GET {{baseUrl}}/me HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiRW1tYW51ZWxAZ21haWwuY29tIiwiaWF0IjoxNjQ3MDA3MjU1LCJleHAiOjE2NDcwMDc4NTV9.rNop5AXxSW8vu8ds53uPFTIvMQ0gO4acg6eKNVBuPfI
+
+### Refresh Token
+POST {{baseUrl}}/refresh-token HTTP/1.1
+content-type: application/json 
+
+{
+    "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiRW1tYW51ZWxAZ21haWwuY29tIiwiaWF0IjoxNjQ2OTQ4ODIzfQ.9BDLiM_5-3R7xGBAcKlNdo5KpN_pk4-dTGkYQZPYFo0"
+}
+### Logout User
+DELETE  {{baseUrl}}/signout HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiRW1tYW51ZWxAZ21haWwuY29tIiwiaWF0IjoxNjQ2OTQ3Mzc0fQ.2i6M0IgwI-ZxQk35hYD8C1VVEoHe1fZpwS-BczjGn9s
