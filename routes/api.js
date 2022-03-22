@@ -1,13 +1,12 @@
 const express = require('express');
-const { create_admin, get_asAdmin } = require("../controllers/AminController");
-const { create_clearance } = require('../controllers/ClearanceController');
-const { create_profile } = require('../controllers/ProfileController');
+const { create_admin, get_asAdmin } = require("../controllers/AminController");  
 const {
   signin,
   signup,
   signout,
   me,
   token,
+  update_user,
 } = require("../controllers/UserController");
 const { authenticateToken, authenticateAdmin } = require('../middleware/auth');
 const route = express.Router() 
@@ -16,6 +15,7 @@ const route = express.Router()
 route // Auth Group
   .post("/signup", signup)
   .post("/signin", signin)
+  .post("/update-user", update_user)
   .delete("/signout", authenticateToken, signout)
   .get("/me", authenticateToken, me)
   .post("/refresh-token", token)
@@ -23,12 +23,8 @@ route // Auth Group
 
 route // admin Group
   .get("/create-admin", create_admin)
-  .get("/get-all",authenticateAdmin, get_asAdmin);
-
-route // Profile Group
-  .post("/create-profile",authenticateToken, create_profile);
-
-route // clearance Group
-  .post("/create-clearance",authenticateToken, create_clearance);
+  .get("/get-all", authenticateAdmin, get_asAdmin);
+ 
+ 
 module.exports=route;
 

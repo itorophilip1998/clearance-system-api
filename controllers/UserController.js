@@ -10,31 +10,78 @@ const User = require("../model/User");
 
 const validator = async (data) => {
   try {
-    const schema = Joi.object({ 
+    const schema = Joi.object({
       email: Joi.string().email().required(),
-      password: Joi.string().min(5).max(15).required(), 
+      password: Joi.string().required(),
+      // officess
+      department: Joi.boolean(),
+      faculty: Joi.boolean(),
+      student_affair: Joi.boolean().required(),
+      library: Joi.boolean().required(),
+      health_services: Joi.boolean().required(),
+      busary: Joi.boolean().required(),
+      accademic_affair: Joi.boolean().required(),
+      registrar: Joi.boolean().required(),
+      // profile
+      name: Joi.string().required(),
+      session: Joi.string().required(),
+      _department: Joi.string().required(),
+      _faculty: Joi.string().required(),
+      status: Joi.string().required(),
     });
     const { repeat_password, ...newData } = await schema.validateAsync(data, {
       abortEarly: false,
     });
     return newData;
   } catch (error) {
-    return error; 
+    return error;
+  }
+};
+const statusPost = (data) => {
+   if (
+      data.department === true &&
+      data.faculty === true &&
+      data.student_affair === true &&
+      data.library === true &&
+      data.health_services === true &&
+      data.busary === true &&
+      data.accademic_affair === true &&
+      data.registrar === true
+    ) {
+     return true;
+   } else {
+     return false;
+    }
+}
+
+exports.signup = async (req, res) => { 
+  try {
+    await validator(req.body);
+    const newStatus = statusPost(req.body);
+    const { status, ...newData } = req.body;
+
+    await User.create({ ...newData, newStatus })
+      .then((result) => {
+        res.send({
+          result,
+          msg: "Registered Succesfully",
+        });
+      })
+      .catch((err) => {
+        res.send(err);
+      });
+  } catch (error) {
+    res.send(error)
   }
 };
 
-exports.signup = async (req, res) => {
+exports.update_user = async (req, res) => {
   try {
-    await validator(req.body);
-    await User.create(req.body)
+    await validator(req.body); 
+    await User.updateOne({status:true})
       .then((result) => {
-        const { email, password } = result;
-        // generate tokens
-        const access_token = generateAccessToken(email, password);
-        const refresh_token = generateRefreshToken(email, password);
         res.json({
           result,
-          access_token,
           msg: "Registered Succesfully",
         });
       })
@@ -81,9 +128,9 @@ exports.signout = (req, res) => {
 
 exports.me = async (req, res) => {
   try {
-      const user =await User.findOne({email:req.user.email})
-      const profile =await Profile.findOne({user_id:req.user._id})
-     res.send(user,profile)
+    const user = await User.findOne({ email: req.user.email });
+    const profile = await Profile.findOne({ user_id: req.user._id });
+    res.send(user, profile);
   } catch (error) {}
 };
 
@@ -95,4 +142,3 @@ exports.token = (req, res) => {
     });
   } catch (error) {}
 };
- 

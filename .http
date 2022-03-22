@@ -5,13 +5,13 @@ POST {{baseUrl}}/signup HTTP/1.1
 content-type: application/json 
 
 {  
-    "email":"test@admin.com",
-    "password":"admin" 
+    "email":"Fpocha20006",
+    "password":"Fpocha20006" 
 }
 
 
 ### Signin 
-POST {{baseUrl}}/create-clearance HTTP/1.1
+GET {{baseUrl}}/create-admin HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoidGVzdEBnbWFpbC5jb20iLCJpYXQiOjE2NDc1NzE1MDIsImV4cCI6MTY0NzU3MjEwMn0.0PDOzeEBzgIVHRIohASu9ZH0v9yo6J2vcPItQucN3do
 content-type: application/json 
 
