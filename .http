@@ -1,5 +1,4 @@
-@baseUrl = http://localhost:8000/api
-
+@baseUrl = https://clerancesystem-api.herokuapp.com//api
 ### Signup 
 POST {{baseUrl}}/signup HTTP/1.1
 content-type: application/json 
@@ -12,13 +11,13 @@ content-type: application/json
 
 ### Signin 
 GET {{baseUrl}}/create-admin HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoidGVzdEBnbWFpbC5jb20iLCJpYXQiOjE2NDc1NzE1MDIsImV4cCI6MTY0NzU3MjEwMn0.0PDOzeEBzgIVHRIohASu9ZH0v9yo6J2vcPItQucN3do
-content-type: application/json 
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoidGVzdEBnbWFpbC5jb20iLCJpYXQiOjE2NDc1NzE1MDIsImV4cCI6MTY0NzU3MjEwMn0.0PDOzeEBzgIVHRIohASu9ZH0v9yo6J2vcPItQucN3do
+# content-type: application/json 
 
-{
-    "user_id":"String",
-    "status":1
-}
+# {
+#     "user_id":"String",
+#     "status":1
+# }
 
  
 ### Get User
