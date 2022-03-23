@@ -1,5 +1,5 @@
-const express = require('express');
-const { create_admin, get_asAdmin } = require("../controllers/AminController");  
+const express = require("express");
+const { create_admin, get_asAdmin } = require("../controllers/AminController");
 const {
   signin,
   signup,
@@ -8,9 +8,8 @@ const {
   token,
   update_user,
 } = require("../controllers/UserController");
-const { authenticateToken, authenticateAdmin } = require('../middleware/auth');
-const route = express.Router() 
-
+const { authenticateToken, authenticateAdmin } = require("../middleware/auth");
+const route = express.Router();
 
 route // Auth Group
   .post("/signup", signup)
@@ -24,7 +23,4 @@ route // Auth Group
 route // admin Group
   .get("/create-admin", create_admin)
   .get("/get-all", authenticateAdmin, get_asAdmin);
- 
- 
-module.exports=route;
-
+module.exports = route;

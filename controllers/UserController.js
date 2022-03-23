@@ -37,29 +37,13 @@ const validator = async (data) => {
     return error;
   }
 };
-const statusPost = (data) => {
-   if (
-      data.department === true &&
-      data.faculty === true &&
-      data.student_affair === true &&
-      data.library === true &&
-      data.health_services === true &&
-      data.busary === true &&
-      data.accademic_affair === true &&
-      data.registrar === true
-    ) {
-     return true;
-   } else {
-     return false;
-    }
-}
 
-exports.signup = async (req, res) => { 
+exports.signup = async (req, res) => {
   try {
     await validator(req.body);
     const newStatus = statusPost(req.body);
     const { status, ...newData } = req.body;
-     console.log(...newData, newStatus)
+    console.log(...newData, newStatus);
     await User.create({ ...newData, newStatus })
       .then((result) => {
         res.send({
@@ -71,15 +55,26 @@ exports.signup = async (req, res) => {
         res.send(err);
       });
   } catch (error) {
-    res.send(error)
+    res.send(error);
   }
 };
 
 exports.update_user = async (req, res) => {
+  const updateUSer = {
+    department: true,
+    faculty: true,
+    student_affair: true,
+    library: true,
+    health_services: true,
+    busary: true,
+    accademic_affair: true,
+    registrar: true,
+    status: true
+  };
   try {
     const { _id } = req.params;
-    const opts = { new: true, upsert: true };
-    await User.findOneAndUpdate({_id }, {status:true}, opts)
+    await User.findOne({ _id })
+      .updateMany({ updateUSer })
       .then((result) => {
         res.json({
           result,
