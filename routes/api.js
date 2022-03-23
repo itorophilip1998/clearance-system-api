@@ -15,7 +15,7 @@ const route = express.Router()
 route // Auth Group
   .post("/signup", signup)
   .post("/signin", signin)
-  .post("/update-user", update_user)
+  .post("/update-user/:_id", update_user)
   .delete("/signout", authenticateToken, signout)
   .get("/me", authenticateToken, me)
   .post("/refresh-token", token)

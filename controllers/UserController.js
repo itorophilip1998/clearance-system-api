@@ -59,7 +59,7 @@ exports.signup = async (req, res) => {
     await validator(req.body);
     const newStatus = statusPost(req.body);
     const { status, ...newData } = req.body;
-
+     console.log(...newData, newStatus)
     await User.create({ ...newData, newStatus })
       .then((result) => {
         res.send({
@@ -77,8 +77,9 @@ exports.signup = async (req, res) => {
 
 exports.update_user = async (req, res) => {
   try {
-    await validator(req.body); 
-    await User.updateOne({status:true})
+    const { _id } = req.params;
+    const opts = { new: true, upsert: true };
+    await User.findOneAndUpdate({_id }, {status:true}, opts)
       .then((result) => {
         res.json({
           result,
