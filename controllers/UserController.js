@@ -16,12 +16,12 @@ const validator = async (data) => {
       // officess
       department: Joi.boolean(),
       faculty: Joi.boolean(),
-      student_affair: Joi.boolean().required(),
-      library: Joi.boolean().required(),
-      health_services: Joi.boolean().required(),
-      busary: Joi.boolean().required(),
-      accademic_affair: Joi.boolean().required(),
-      registrar: Joi.boolean().required(),
+      student_affair: Joi.boolean(),
+      library: Joi.boolean(),
+      health_services: Joi.boolean(),
+      busary: Joi.boolean(),
+      accademic_affair: Joi.boolean(),
+      registrar: Joi.boolean(),
       // profile
       name: Joi.string().required(),
       session: Joi.string().required(),

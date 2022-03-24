@@ -5,7 +5,12 @@ content-type: application/json
 
 {  
     "email":"Fpocha20006",
-    "password":"Fpocha20006" 
+    "password":"Fpocha20006" , 
+      "name":" Joi.string().required()",
+      "session": "Joi.string().required()",
+      "_department": "Joi.string().required()",
+      "_faculty": "Joi.string().required()",
+      "status": "Joi.string().required()"
 }
 
 
