@@ -41,10 +41,7 @@ const validator = async (data) => {
 exports.signup = async (req, res) => {
   try {
     await validator(req.body);
-    const newStatus = statusPost(req.body);
-    const { status, ...newData } = req.body;
-    console.log(...newData, newStatus);
-    await User.create({ ...newData, newStatus })
+    await User.create(req.body)
       .then((result) => {
         res.send({
           result,
@@ -69,7 +66,7 @@ exports.update_user = async (req, res) => {
     busary: true,
     accademic_affair: true,
     registrar: true,
-    status: true
+    status: true,
   };
   try {
     const { _id } = req.params;

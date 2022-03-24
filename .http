@@ -1,4 +1,4 @@
-@baseUrl = https://clerancesystem-api.herokuapp.com//api
+@baseUrl = https://clerancesystem-api.herokuapp.com/api
 ### Signup 
 POST {{baseUrl}}/signup HTTP/1.1
 content-type: application/json 
